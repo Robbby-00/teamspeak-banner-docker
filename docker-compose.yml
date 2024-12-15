@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  server:
+    image: "robby02/ts3-banner:latest"
+    container_name: "ts3_banner"
+    environment:
+      - SERVERQUERY_USERNAME=${SERVERQUERY_USERNAME:-serveradmin}
+      - SERVERQUERY_PASSWORD=${SERVERQUERY_PASSWORD:-PASSWORD}
+      - SERVER_IP=${SERVER_IP:-127.0.0.1}
+      - SERVERQUERY_PORT=${SERVERQUERY_PORT:-10011}
+      - TS3_PORT=${TS3_PORT:-9987}
+    ports:
+      - ${PORT:-80}:80/tcp
+    restart: always
+    volumes:
+     - data:/var/www/html/ts3-banner
+volumes:
+  data:
